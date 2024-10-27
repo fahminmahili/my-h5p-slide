@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid black;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div onclick="showPopup('researchPopup')" style="cursor:pointer; color:blue; text-decoration:underline;">
+        1. Research: Click for more info
+    </div>
+    
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+    
+    <div class="popup" id="researchPopup">
+        <p><strong>Research: Collect and Analyze Data</strong></p>
+        <p>This step involves understanding the needs and context of the users...</p>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+
+    <script>
+        function showPopup(popupId) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(popupId).style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
+        }
+    </script>
+
+</body>
+</html>
